@@ -1,0 +1,13 @@
+# pdf解析
+pymupdf>=1.24.0
+# pydantic数据模型
+pydantic>=2.8
+# 模糊字符串匹配
+fuzzywuzzy>=0.18.0
+# 中文大写金额转阿拉伯数字
+cn2an>=0.5.22
+# 可选：OCR（如果你调用本地OCR）
+# pytesseract>=0.3.10
+
+# 测试相关
+pytest>=8.0

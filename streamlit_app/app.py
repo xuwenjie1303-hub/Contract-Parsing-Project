@@ -95,7 +95,6 @@ if uploaded_file:
             try:
                 st.write("🤖正在调用本地 LLM...")
                 output = call_llm(test_prompt)
-                st.write(output)
                 st.write("✅完成")
             except Exception as e:
                 logging.exception("模型处理出现错误")
