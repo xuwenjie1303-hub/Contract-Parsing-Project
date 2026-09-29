@@ -1,0 +1,34 @@
+[
+  {
+    "contract_number": "SB-2025-0712",
+    "party_a": "南京锐科工程有限公司",
+    "party_b": "杭州恒信设备科技有限公司",
+    "amount_value": "69000",
+    "amount_currency": "人民币",
+    "sign_date": "2025-07-12"
+  },
+  {
+    "contract_number": "TECH-2025-1103",
+    "party_a": "李宏远",
+    "party_b": "云途智能技术有限公司",
+    "amount_value": "170000",
+    "amount_currency": "元",
+    "sign_date": "2025-11-03"
+  },
+  {
+    "contract_number": "FB-2025-0805",
+    "party_a": "中城建设集团有限公司",
+    "party_b": "安徽顺安施工队",
+    "amount_value": "236500",
+    "amount_currency": "元",
+    "sign_date": "2025-08-05"
+  },
+  {
+    "contract_number": "CK-2025-0420",
+    "party_a": "上海盛达仓储有限公司",
+    "party_b": "苏州博创数字科技有限公司",
+    "amount_value": "141120",
+    "amount_currency": "人民币",
+    "sign_date": "2025-04-20"
+  }
+]

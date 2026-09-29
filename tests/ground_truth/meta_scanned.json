@@ -1,0 +1,26 @@
+[
+  {
+    "contract_number": "SPS-2023-01102",
+    "party_a": "安徽舒盛建设工程有限公司",
+    "party_b": "安徽舒朋仕环保科技有限公司",
+    "amount_value": "123000.00",
+    "amount_currency": "人民币",
+    "sign_date": "2023年11月02日"
+  },
+  {
+    "contract_number": "FB-HT-2024-091-2025-02-0001",
+    "party_a": "安徽建工建设投资集团有限公司定远分公司",
+    "party_b": "安徽舒盛建设工程有限公司",
+    "amount_value": "47309267.30元",
+    "amount_currency": "人民币",
+    "sign_date": "2025年2月27日"
+  },
+  {
+    "contract_number": "J62G-LW-226-0014",
+    "party_a": "建工路港集团",
+    "party_b": "安徽舒盛建设工程有限公司",
+    "amount_value": "32113362.94元",
+    "amount_currency": "人民币",
+    "sign_date": "2020年9月"
+  }
+]

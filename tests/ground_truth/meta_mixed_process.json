@@ -1,0 +1,250 @@
+[
+  {
+    "contract_number": {
+      "value": "SB-2025-0712",
+      "source_page": 1,
+      "source_text": "# 设备采购合同\n合同编号：SB-2025-0712\n甲方（采购方）：南京锐科工程有限公司\n统一社会信用代码：91320115MA1X8D7F2L\n乙方（供应方）：杭州恒信设备科技有限公司\n统一社会信用代码：91330106MA27W6H91P\n\n##",
+      "confidence": null,
+      "description": "合同编号",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_a": {
+      "value": "南京锐科工程有限公司",
+      "source_page": 1,
+      "source_text": "# 设备采购合同\n合同编号：SB-2025-0712\n甲方（采购方）：南京锐科工程有限公司\n统一社会信用代码：91320115MA1X8D7F2L\n乙方（供应方）：杭州恒信设备科技有限公司\n统一社会信用代码：91330106MA27W6H91P\n\n### 采购清单表\n|序号|设备名称|规格",
+      "confidence": null,
+      "description": "主体A",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_b": {
+      "value": "杭州恒信设备科技有限公司",
+      "source_page": 1,
+      "source_text": "# 设备采购合同\n合同编号：SB-2025-0712\n甲方（采购方）：南京锐科工程有限公司\n统一社会信用代码：91320115MA1X8D7F2L\n乙方（供应方）：杭州恒信设备科技有限公司\n统一社会信用代码：91330106MA27W6H91P\n\n### 采购清单表\n|序号|设备名称|规格型号|数量|单价（元）|小计（元）|备注|\n| ----  | ----  | ----  | -",
+      "confidence": null,
+      "description": "主体B",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_value": {
+      "value": 69000.0,
+      "source_page": 1,
+      "source_text": "台|12500|25000|含3年质保|\n|2|高速文档服务器|SVR-A10|1套|38600|38600|预装Triton推理环境|\n|3|配套运维套件|标准版|1套|6400|6400|  |\n|合计（人民币大写）：陆万玖仟元整  | 总金额小写：69000元  |\n\n签署地点：南京市江宁区\n签署日期：2025-07-12\n\n付款约定：合同签订后3个工作日支付50%预付款；设备验收合格后支付剩余50%尾款。\n争议解决：向合同签署地人民法院提起诉讼。",
+      "confidence": null,
+      "description": "交易金额",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_currency": {
+      "value": "人民币",
+      "source_page": 1,
+      "source_text": "：南京锐科工程有限公司\n统一社会信用代码：91320115MA1X8D7F2L\n乙方（供应方）：杭州恒信设备科技有限公司\n统一社会信用代码：91330106MA27W6H91P\n\n### 采购清单表\n|序号|设备名称|规格型号|数量|单价（元）|小计（元）|备注|\n| ----  | ----  | ----  | ----  | ----  | ----  | ----  |\n|1|工业扫描仪|Scan-Pro-2400|2台|12500|25000|含3年",
+      "confidence": null,
+      "description": "货币单位",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "sign_date": {
+      "value": null,
+      "source_page": 1,
+      "source_text": "8600|预装Triton推理环境|\n|3|配套运维套件|标准版|1套|6400|6400|  |\n|合计（人民币大写）：陆万玖仟元整  | 总金额小写：69000元  |\n\n签署地点：南京市江宁区\n签署日期：2025-07-12\n\n付款约定：合同签订后3个工作日支付50%预付款；设备验收合格后支付剩余50%尾款。\n争议解决：向合同签署地人民法院提起诉讼。",
+      "confidence": null,
+      "description": "签署日期",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    }
+  },
+  {
+    "contract_number": {
+      "value": "TECH-2025-1103",
+      "source_page": 1,
+      "source_text": "# 技术服务协议\n协议编号：TECH-2025-1103\n甲方（委托方）：李宏远\n身份证号：340104198203154567\n乙方（受托方）：云途智能技术有限公司\n统一社会信用代码：91310110MA1G9K2R7Q\n\n## 服务内容与费用表\n|服务",
+      "confidence": null,
+      "description": "合同编号",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_a": {
+      "value": "李宏远",
+      "source_page": 1,
+      "source_text": "# 技术服务协议\n协议编号：TECH-2025-1103\n甲方（委托方）：李宏远\n身份证号：340104198203154567\n乙方（受托方）：云途智能技术有限公司\n统一社会信用代码：91310110MA1G9K2R7Q\n\n## 服务内容与费用表\n|服务模块|服务周期|服务费用",
+      "confidence": null,
+      "description": "主体A",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_b": {
+      "value": "云途智能技术有限公司",
+      "source_page": 1,
+      "source_text": "# 技术服务协议\n协议编号：TECH-2025-1103\n甲方（委托方）：李宏远\n身份证号：340104198203154567\n乙方（受托方）：云途智能技术有限公司\n统一社会信用代码：91310110MA1G9K2R7Q\n\n## 服务内容与费用表\n|服务模块|服务周期|服务费用|交付物|\n| ----  | ----  | ----  | ----  |\n|PD",
+      "confidence": null,
+      "description": "主体B",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_value": {
+      "value": 170000.0,
+      "source_page": 1,
+      "source_text": "|Triton模型部署调优|1个月|42000元|推理服务镜像+性能报告|\n合计总费用：人民币壹拾柒万元整（¥170000）\n",
+      "confidence": null,
+      "description": "交易金额",
+      "error": null,
+      "trace_status": "VALUE_MATCH",
+      "match_score": 100.0
+    },
+    "amount_currency": {
+      "value": "元",
+      "source_page": 1,
+      "source_text": "限公司\n统一社会信用代码：91310110MA1G9K2R7Q\n\n## 服务内容与费用表\n|服务模块|服务周期|服务费用|交付物|\n| ----  | ----  | ----  | ----  |\n|PDF文档OCR抽取系统开发|3个月|128000元|本地部署代码、测试数据集|\n|Triton模型部署调优|1个月|42000元|推理服务镜像+性能报告|\n合计总费用：人民币壹拾柒万元整（¥170000）\n\n生效日期：2025-11-03\n签署日期：2025-11-03\n其他约",
+      "confidence": null,
+      "description": "货币单位",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "sign_date": {
+      "value": null,
+      "source_page": 1,
+      "source_text": "OCR抽取系统开发|3个月|128000元|本地部署代码、测试数据集|\n|Triton模型部署调优|1个月|42000元|推理服务镜像+性能报告|\n合计总费用：人民币壹拾柒万元整（¥170000）\n\n生效日期：2025-11-03\n签署日期：2025-11-03\n其他约定：乙方保证系统可本地离线运行，不上传原始文件至公有云。",
+      "confidence": null,
+      "description": "签署日期",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    }
+  },
+  {
+    "contract_number": {
+      "value": "FB-2025-0805",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n###",
+      "confidence": null,
+      "description": "合同编号",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_a": {
+      "value": "中城建设集团有限公司",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|",
+      "confidence": null,
+      "description": "主体A",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_b": {
+      "value": "安徽顺安施工队",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|结算总价|\n| ----  | ----  | ----  |\n|园区弱电改造|布线、设",
+      "confidence": null,
+      "description": "主体B",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_value": {
+      "value": 236500.0,
+      "source_page": 1,
+      "source_text": "| ----  | ----  | ----  |\n|园区弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n",
+      "confidence": null,
+      "description": "交易金额",
+      "error": null,
+      "trace_status": "VALUE_MATCH",
+      "match_score": 100.0
+    },
+    "amount_currency": {
+      "value": "人民币",
+      "source_page": 1,
+      "source_text": "分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|结算总价|\n| ----  | ----  | ----  |\n|园区弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n\n付款节点：\n1. 进场：支付30%；\n2. 完工验收：支付65%；\n3. 质保期满，支付剩余5%质保金。\n签署日期：2025-08-05",
+      "confidence": null,
+      "description": "货币单位",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "sign_date": {
+      "value": null,
+      "source_page": 1,
+      "source_text": "弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n\n付款节点：\n1. 进场：支付30%；\n2. 完工验收：支付65%；\n3. 质保期满，支付剩余5%质保金。\n签署日期：2025-08-05",
+      "confidence": null,
+      "description": "签署日期",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    }
+  },
+  {
+    "contract_number": {
+      "value": "CK-2025-0420",
+      "source_page": 1,
+      "source_text": "# 仓储租赁合同\n合同编号：CK-2025-0420\n甲方（出租方）：上海盛达仓储有限公司\n统一社会信用代码：91310116MA1J7F3N4T\n乙方（承租方）：苏州博创数字科技有限公司\n统一社会信用代码：91320506MA2MX8G56K\n\n##",
+      "confidence": null,
+      "description": "合同编号",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_a": {
+      "value": "上海盛达仓储有限公司",
+      "source_page": 1,
+      "source_text": "# 仓储租赁合同\n合同编号：CK-2025-0420\n甲方（出租方）：上海盛达仓储有限公司\n统一社会信用代码：91310116MA1J7F3N4T\n乙方（承租方）：苏州博创数字科技有限公司\n统一社会信用代码：91320506MA2MX8G56K\n\n## 租赁明细\n|租赁区域|面积|月租金|",
+      "confidence": null,
+      "description": "主体A",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_b": {
+      "value": "苏州博创数字科技有限公司",
+      "source_page": 1,
+      "source_text": "# 仓储租赁合同\n合同编号：CK-2025-0420\n甲方（出租方）：上海盛达仓储有限公司\n统一社会信用代码：91310116MA1J7F3N4T\n乙方（承租方）：苏州博创数字科技有限公司\n统一社会信用代码：91320506MA2MX8G56K\n\n## 租赁明细\n|租赁区域|面积|月租金|租赁期限|租金总额|\n| ----  | ----  | ----  | ----  | ----",
+      "confidence": null,
+      "description": "主体B",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_value": {
+      "value": 141120.0,
+      "source_page": 1,
+      "source_text": "----  | ----  | ----  |\n|A区2号仓库|420㎡|28元/㎡|2025.05.01 - 2026.04.30|141120元|\n\n租金总额：人民币壹拾肆万壹仟壹佰贰拾元整。\n押金：20000元（押金不计入合同总交易金额）\n签署日期：2025-04-20\n备注：押金仅作为履约担保，到期无违约全额退还。",
+      "confidence": null,
+      "description": "交易金额",
+      "error": null,
+      "trace_status": "FUZZY_MATCH",
+      "match_score": 88.88888888888889
+    },
+    "amount_currency": {
+      "value": "人民币",
+      "source_page": 1,
+      "source_text": "会信用代码：91320506MA2MX8G56K\n\n## 租赁明细\n|租赁区域|面积|月租金|租赁期限|租金总额|\n| ----  | ----  | ----  | ----  | ----  |\n|A区2号仓库|420㎡|28元/㎡|2025.05.01 - 2026.04.30|141120元|\n\n租金总额：人民币壹拾肆万壹仟壹佰贰拾元整。\n押金：20000元（押金不计入合同总交易金额）\n签署日期：2025-04-20\n备注：押金仅作为履约担保，到期无违约全额退还。",
+      "confidence": null,
+      "description": "货币单位",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "sign_date": {
+      "value": null,
+      "source_page": 1,
+      "source_text": "|A区2号仓库|420㎡|28元/㎡|2025.05.01 - 2026.04.30|141120元|\n\n租金总额：人民币壹拾肆万壹仟壹佰贰拾元整。\n押金：20000元（押金不计入合同总交易金额）\n签署日期：2025-04-20\n备注：押金仅作为履约担保，到期无违约全额退还。",
+      "confidence": null,
+      "description": "签署日期",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    }
+  }
+]

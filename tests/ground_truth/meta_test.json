@@ -1,0 +1,64 @@
+[
+  {
+    "contract_number": {
+      "value": "FB-2025-0805",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n###",
+      "confidence": null,
+      "description": "合同编号",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_a": {
+      "value": "中城建设集团有限公司",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|",
+      "confidence": null,
+      "description": "主体A",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "party_b": {
+      "value": "安徽顺安施工队",
+      "source_page": 1,
+      "source_text": "# 工程分包协议\n协议编号：FB-2025-0805\n甲方（总包方）：中城建设集团有限公司\n统一社会信用代码：91320100743908276P\n乙方（分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|结算总价|\n| ----  | ----  | ----  |\n|园区弱电改造|布线、设",
+      "confidence": null,
+      "description": "主体B",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "amount_value": {
+      "value": 236500.0,
+      "source_page": 1,
+      "source_text": "| ----  | ----  | ----  |\n|园区弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n",
+      "confidence": null,
+      "description": "交易金额",
+      "error": null,
+      "trace_status": "VALUE_MATCH",
+      "match_score": 100.0
+    },
+    "amount_currency": {
+      "value": "人民币",
+      "source_page": 1,
+      "source_text": "分包方）：安徽顺安施工队\n负责人：王建军，身份证：340122197811067890\n\n### 工程价款明细表\n|工程项目|工程内容|结算总价|\n| ----  | ----  | ----  |\n|园区弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n\n付款节点：\n1. 进场：支付30%；\n2. 完工验收：支付65%；\n3. 质保期满，支付剩余5%质保金。\n签署日期：2025-08-05",
+      "confidence": null,
+      "description": "货币单位",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    },
+    "sign_date": {
+      "value": "2025‑08‑05",
+      "source_page": 1,
+      "source_text": "弱电改造|布线、设备安装调试，验收合格交付|236500元（大写：贰拾叁万陆仟伍佰元整）|\n\n付款节点：\n1. 进场：支付30%；\n2. 完工验收：支付65%；\n3. 质保期满，支付剩余5%质保金。\n签署日期：2025-08-05",
+      "confidence": null,
+      "description": "签署日期",
+      "error": null,
+      "trace_status": "FOUND",
+      "match_score": 100.0
+    }
+  }
+]

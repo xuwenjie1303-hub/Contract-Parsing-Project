@@ -1,0 +1,42 @@
+[
+  {
+    "contract_number": "WZ-2025-0331",
+    "party_a": "绿源农业发展有限公司",
+    "party_b": "淮安惠农农资贸易有限公司",
+    "amount_value": "672000",
+    "amount_currency": "元",
+    "sign_date": "2025-03-31"
+  },
+  {
+    "contract_number": "CG-2025-0042",
+    "party_a": "华东智能制造有限公司",
+    "party_b": "南京恒信机电设备有限公司",
+    "amount_value": "2285000.00",
+    "amount_currency": "人民币",
+    "sign_date": "2025-03-12"
+  },
+  {
+    "contract_number": "LW-FB-2025-0117",
+    "party_a": "江北城建集团有限公司",
+    "party_b": "徐州诚达建筑劳务有限公司",
+    "amount_value": "13628400.55",
+    "amount_currency": "人民币",
+    "sign_date": "2025-04-02"
+  },
+  {
+    "contract_number": "JSKF-2025-079",
+    "party_a": "云海医疗科技有限公司",
+    "party_b": "苏州智数软件有限公司",
+    "amount_value": "896000",
+    "amount_currency": "人民币",
+    "sign_date": "未在文本中明确标注"
+  },
+  {
+    "contract_number": null,
+    "party_a": "张卫国",
+    "party_b": "江苏拓远商贸有限公司",
+    "amount_value": "360000",
+    "amount_currency": "人民币",
+    "sign_date": "2025-03-20"
+  }
+]

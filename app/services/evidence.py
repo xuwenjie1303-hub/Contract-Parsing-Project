@@ -7,13 +7,6 @@ from rapidfuzz import fuzz
 #fuzz found
 #NOT_FOUND
 FIELD_ALIASES = {
-    "合同金额": [
-        "合同金额",
-        "合同总额",
-        "合同总价",
-        "含税总价",
-        "总金额",
-    ],
 
     "合同编号": [
         "合同编号",
@@ -41,6 +34,11 @@ FIELD_ALIASES = {
         "总金额",
         "交易总金额",
         "交易数字",
+        "合同金额",
+        "合同总额",
+        "合同总价",
+        "含税总价",
+        "总金额",
     ],
     "货币单位":[
         "元",
@@ -81,10 +79,14 @@ def normalize_text(text: str) -> str:
 def get_keywords(keyword: str):
     return FIELD_ALIASES.get(keyword, [keyword])
 
+
 def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_threshold=75):
     keywords = get_keywords(keyword)
     best_match = None
+    early_stop = False
     for page in document.pages:
+        if early_stop:
+            break
         page_text = page.text
 
         if not page_text:
@@ -92,23 +94,38 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
         lines = page.text.splitlines()
         search_start = 0
         for i, line in enumerate(lines):
+            if early_stop:
+                break
             if not line.strip():
                 search_start += len(line) + 1
                 continue
             normalize_line = normalize_text(line)
+            
             for factor in keywords:
+                match_score = 0
                 normalize_factor = normalize_text(factor)
+                # print(normalize_factor)
+                # print(normalize_line)
+          
                 if normalize_factor in normalize_line:
                     match_score = 100
-                    
+                    print(normalize_factor)
+                    print(normalize_line)
+
                 else:
-                    match_score = fuzz.partial_ratio(
-                        normalize_factor,
-                        normalize_line,
-                    )
+                    if match_score < 100:
+                        if len(normalize_factor)<len(normalize_line):
+                            match_score = fuzz.partial_ratio(
+                                normalize_factor,
+                                normalize_line,
+                            )
+                    if match_score>90:
+                        print(match_score)
+                        print(normalize_line)
+                        print(normalize_factor)
                 if match_score < fuzzy_threshold:
                     continue
-
+                    
                 if (
                     best_match is None
                     or match_score > best_match["score"]
@@ -118,7 +135,9 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
                         "line": line,
                         "score": match_score,
                     }
-
+                    if best_match["score"] == 100:
+                        early_stop = True
+                        break
             search_start += len(line) + 1
     if best_match is None:
         if value is not None:
@@ -139,6 +158,7 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
         }        
     page = best_match["page"]
     line = best_match["line"]
+    
     index = page.text.find(line)
     if index == -1:
         return {

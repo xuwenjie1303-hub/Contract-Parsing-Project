@@ -1,0 +1,34 @@
+[
+  {
+    "contract_number": "CL-2025-0098",
+    "party_a": "深圳精工五金制品有限公司",
+    "party_b": "佛山铝合金材料有限公司",
+    "amount_value": "1453600.00",
+    "amount_currency": "人民币",
+    "sign_date": "2025-06-25"
+  },
+  {
+    "contract_number": "SOFT-2025-0121",
+    "party_a": "无锡蓝海生物科技有限公司",
+    "party_b": "上海数联软件科技有限公司",
+    "amount_value": "468000.00",
+    "amount_currency": "人民币",
+    "sign_date": "2025-06-08"
+  },
+  {
+    "contract_number": "CG-TAB-2025-0088",
+    "party_a": "杭州正达工业科技有限公司",
+    "party_b": "宁波力拓智能装备有限公司",
+    "amount_value": "1965400.00",
+    "amount_currency": "人民币",
+    "sign_date": "2025-05-18"
+  },
+  {
+    "contract_number": "LW-GCL-2025-0156",
+    "party_a": "合肥市路桥工程有限公司",
+    "party_b": "阜阳华宇建筑劳务有限公司",
+    "amount_value": "9103500.00",
+    "amount_currency": "人民币",
+    "sign_date": "2025-05-30"
+  }
+]
