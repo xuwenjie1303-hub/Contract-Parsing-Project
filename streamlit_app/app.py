@@ -13,7 +13,9 @@ from app.model.contract import supply_system,build_contract
 from app.services.normalizer import normalize_amount,normalize_date
 from app.services.validator import check_output
 from app.services.json_parser import parse_llm_json
-
+from app.services.contract_pipeline import process_contract
+from streamlit_app.single_file_process import single_process
+from streamlit_app.multipied_files import multipied_process
 
 logging.basicConfig(
     filename="app.log",
@@ -55,117 +57,22 @@ uploaded_file=st.file_uploader(
     "upload PDF",
     type=['pdf']
 )
-
+uploaded_files = st.file_uploader(
+    "选择多份合同 PDF",
+    type=["pdf"],
+    accept_multiple_files=True,
+    key="batch_pdf_uploader",
+)
 st.caption(
     "Upload a PDF above to start extracting structured information."
 )
 
+
+if uploaded_files:
+    multipied_process(uploaded_files)
+
 if uploaded_file:
-    st.write(uploaded_file.name)
-    if st.button('读取'):
-        with st.status("任务开始", expanded=True) as status:
-            pdf_input = uploaded_file.read()
-
-            st.write("📄 正在解析 PDF...")
-
-            try:
-                result = extract_text_from_pdf(pdf_input, uploaded_file.name)
-            except Exception as e:
-                logging.exception("处理文件失败")
-                st.write("处理文件失败")
-
-            st.write("✅完成")
-            text=' '
-            ls=product_texts(result)
-            document = text.join(ls[0:5])
-            
-            schema = ContractLLMOutput.model_json_schema()
-            test_prompt = f"""
-    #                 你是一个企业合同信息抽取助手。请根据提供的合同文本提取以下信息:
-    #                 {schema}
-    #                 只返回结构化结果，不要添加额外解释。       
-    #                 1. 输出JSON**严格只包含下面列出的key，禁止增加任何额外字段、注释、解释文字**。
-    #                 2. amount_value：提取合同内的**合同总金额**；如果是按月租赁，提取整个合同周期总租金；
-    #                 3. 如果找不到对应值，返回null，不要编造内容。
-    #                 4. 不要输出markdown```json标记，直接输出纯JSON。
-     
-    #                 合同文本为：
-    #                 {document}
-    #                 """
-            try:
-                st.write("🤖正在调用本地 LLM...")
-                output = call_llm(test_prompt)
-                st.write("✅完成")
-            except Exception as e:
-                logging.exception("模型处理出现错误")
-                st.write("模型处理出现错误")
-            try:
-                raw_dict = parse_llm_json(output)
-            # st.write(raw_dict)
-            except Exception as e:
-                logging.exception("模型输出json失败")
-                st.write("模型输出json失败")
-
-            # st.write(raw_dict)
-            inner_dict = raw_dict.get("properties", raw_dict)
-            llm_outputcontract = ContractLLMOutput(**inner_dict)
-            # llm_outputcontract = ContractLLMOutput(**raw_dict)
-            contractoutput = build_contract(llm_outputcontract)
-
-            # print(f"LLM输出结果：{contractoutput.model_dump_json()}")
-            # print(f"PDF前3000字符原文：{document[:3000]}")
-
-            st.write("🔍 正在建立原文溯源...")
-            supply_system(result,contractoutput)
-            st.write("✅完成")
-
-
-            # st.write(contractoutput)
-
-
-            l1 = normalize_amount(contractoutput.amount_value.value)
-            l2 = normalize_date(contractoutput.sign_date.value)
-            contractoutput.sign_date.value=l2
-            contractoutput.amount_value.value=l1
-
-            #计算置信度
-            check_output(contractoutput)
-
-            status.update(
-                label="处理完成",
-                state="complete"
-            )
-            rows=[]
-            for fname in Contract.model_fields.keys():
-                fr = getattr(contractoutput, fname)
-                val = fr.value if fr.value is not None else "大模型提取失败"
-                source_txt = fr.source_text if fr.source_text else ""
-                source_page = fr.source_page if fr.source_page else ""
-                rows.append({
-                    "字段描述": fr.description,
-                    "提取值": val,
-                    "页码": source_page,
-                    "原文片段": source_txt,
-                    "溯源状态": fr.trace_status
-                })
-            st.dataframe(
-                rows,
-                use_container_width=True,
-                column_config={
-                    "字段描述": {"width":150},
-                    "提取值": {"width":200},
-                    "页码":{"width":50},
-                    "原文片段": {"width":450},
-                    "溯源状态":{"width":220}
-                }
-            )
-            # st.write(contractoutput.contract_number)
-            # st.write(contractoutput.party_a)
-            # st.write(contractoutput.party_b)
-            # st.write(contractoutput.amount_value)
-            # st.write(contractoutput.amount_currency)
-            # st.write(contractoutput.sign_date)
-
+    single_process(uploaded_file)
 
 st.divider()
 
