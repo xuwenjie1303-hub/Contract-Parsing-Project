@@ -1,59 +1,11 @@
 import re 
 from rapidfuzz import fuzz
-
+from app.services.data import FIELD_ALIASES
 #找到原文数据
 
 #FOUND
 #fuzz found
 #NOT_FOUND
-FIELD_ALIASES = {
-
-    "合同编号": [
-        "合同编号",
-        "合同号",
-        "协议编号",
-        "协议号",
-    ],
-
-    "主体A": [
-        "甲方",
-        "买方",
-        "采购方",
-        "委托方",
-        
-    ],
-
-    "主体B": [
-        "乙方",
-        "卖方",
-        "供应方",
-        "受托方",
-        
-    ],
-    "交易金额":[
-        "总金额",
-        "交易总金额",
-        "交易数字",
-        "合同金额",
-        "合同总额",
-        "合同总价",
-        "含税总价",
-        "总金额",
-    ],
-    "货币单位":[
-        "元",
-        "英镑",
-        "美元",
-        "人民币",
-    ],
-    "签署日期":[
-        "签署时间",
-        "合同日期",
-        "日期",
-    ]
-
-
-}
 import re
 import unicodedata
 
@@ -82,7 +34,8 @@ def get_keywords(keyword: str):
 
 def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_threshold=75):
     keywords = get_keywords(keyword)
-    best_match = None
+    best_match = []
+    result=[]
     early_stop = False
     for page in document.pages:
         if early_stop:
@@ -94,8 +47,6 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
         lines = page.text.splitlines()
         search_start = 0
         for i, line in enumerate(lines):
-            if early_stop:
-                break
             if not line.strip():
                 search_start += len(line) + 1
                 continue
@@ -104,14 +55,14 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
             for factor in keywords:
                 match_score = 0
                 normalize_factor = normalize_text(factor)
-                # print(normalize_factor)
-                # print(normalize_line)
           
                 if normalize_factor in normalize_line:
                     match_score = 100
-                    print(normalize_factor)
-                    print(normalize_line)
-
+                    best_match.append ({
+                    "page": page,
+                    "line": line,
+                    "score": match_score,
+                })
                 else:
                     if match_score < 100:
                         if len(normalize_factor)<len(normalize_line):
@@ -119,25 +70,14 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
                                 normalize_factor,
                                 normalize_line,
                             )
-                    if match_score>90:
-                        print(match_score)
-                        print(normalize_line)
-                        print(normalize_factor)
-                if match_score < fuzzy_threshold:
-                    continue
-                    
-                if (
-                    best_match is None
-                    or match_score > best_match["score"]
-                ):
-                    best_match = {
-                        "page": page,
-                        "line": line,
-                        "score": match_score,
-                    }
-                    if best_match["score"] == 100:
-                        early_stop = True
-                        break
+                    if match_score>fuzzy_threshold:
+                        best_match.append ({
+                                            "page": page,
+                                            "line": line,
+                                            "score": match_score,
+                                        })
+
+
             search_start += len(line) + 1
     if best_match is None:
         if value is not None:
@@ -150,42 +90,38 @@ def find_evidence(document, keyword, value=None, context_chars=100, fuzzy_thresh
         if evidence is not None:
             return evidence
 
-        return {
+        return [{
             "status": "NOT_FOUND",
             "page": None,
             "text": None,
             "score": None,
-        }        
-    page = best_match["page"]
-    line = best_match["line"]
+        }]        
+
+    for i,item in enumerate(best_match):
+        page = item["page"]
+        line = item["line"]
     
-    index = page.text.find(line)
-    if index == -1:
-        return {
-            "status": "NOT_FOUND",
-            "page": None,
-            "text": None,
-            "score": None,
-        }        
-    start = max(0, index - context_chars)
-    end = min(
-        len(page.text),
-        index + len(line) + context_chars,
-    )
-    source_text = page.text[start:end].strip()
+        index = page.text.find(line)
+   
+        start = max(0, index - context_chars)
+        end = min(
+            len(page.text),
+            index + len(line) + context_chars,
+        )
+        source_text = page.text[start:end].strip()
 
-    status = (
-        "FOUND"
-        if best_match["score"] == 100
-        else "FUZZY_MATCH"
-    )
-
-    return {
+        status = (
+            "FOUND"
+            if item["score"] == 100
+            else "FUZZY_MATCH"
+        )
+        result.append({
         "status": status,
         "page": page.page_number,
         "text": source_text,
-        "score": best_match["score"],
-    }
+        "score": item["score"],
+        })
+    return result[0:10]
 
 def search_by_value(document, value, context_chars=100):
 
@@ -221,10 +157,10 @@ def search_by_value(document, value, context_chars=100):
 
                     source_text = "\n".join(lines[start:end])
 
-                    return {
+                    return [{
                         "status": "VALUE_MATCH",
                         "page": page.page_number,
                         "text": source_text,
                         "score": 100,
-                    }
+                    }]
     return None

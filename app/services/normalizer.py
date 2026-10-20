@@ -14,8 +14,8 @@ def normalize_amount(value: str | float | int) -> float:
     if value.endswith("万"):
         value = value[:-1]
         return float(value) * 10000
-    # if value == None:
-    #     return None
+    if value == None:
+        return None
     value = re.findall(r"\d+", value)
     value = int(value[0])
     return float(value)
@@ -26,7 +26,6 @@ def normalize_date(date_text: str | None) -> str | None:
     将杂乱日期字符串归一化为 YYYY‑MM‑DD
     解析失败返回 None
     """
-    print(date_text)
     if not date_text:
         return None
     date_text = date_text.strip()

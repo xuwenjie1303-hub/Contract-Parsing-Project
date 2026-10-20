@@ -36,7 +36,7 @@ def extract_text_from_pdf(pdf_input: str, filename: str|None = None,) -> datacla
                 text=page_text
             )
         )
-        print(page_text)
+
     result = Document(
         filename=filename,
         pages_count=len(doc),
@@ -48,6 +48,7 @@ def extract_text_from_pdf(pdf_input: str, filename: str|None = None,) -> datacla
     return result
 
 
-result = extract_text_from_pdf("/Users/xuwenjie/Python/project_30_days/PDF_proj/data/2025-01s10扬州至淮南高速公路项目（合同）.pdf",orc_service)
+
+# result = extract_text_from_pdf("/Users/xuwenjie/Python/project_30_days/PDF_proj/data/2025-01s10扬州至淮南高速公路项目（合同）.pdf",orc_service)
 # result = extract_text_from_pdf("/Users/xuwenjie/Python/project_30_days/PDF_proj/data/技术服务委托合同.pdf")
 print(result.pages[0].text)

@@ -3,6 +3,8 @@ from app.services.evidence import find_evidence
 from operator import attrgetter
 import logging
 import streamlit as st
+from app.services.llm_service import call_llm
+from app.services.json_parser import parse_llm_json
 
 
 class FieldResult(BaseModel):
@@ -61,19 +63,77 @@ def build_contract(llm_out: ContractLLMOutput) -> Contract:
 
 
 #完善空值
-def supply_system(document, contract: Contract):
+def supply_system(evidence, contract: Contract):
     for fname in Contract.model_fields.keys():
-        fr:FieldResult = getattr(contract, fname)
-        try:
-            evidence = find_evidence(document, Contract.model_fields[fname].description, fr.value)
-        except Exception as e:
-            logging.exception("溯源过程出现失败")
-            st.write("溯源过程出现失败")
-        if evidence is None:
+        if evidence[fname] is None:
             continue
         fr: FieldResult = getattr(contract, fname)
-        fr.source_page = evidence["page"]
-        fr.source_text = evidence["text"]
-        fr.trace_status = evidence["status"]
-        fr.match_score = evidence["score"]
-        setattr(contract,fname,fr)
+        prompt = build_evidence_prompt(fname, fr.value, evidence[fname])
+        # 4. 调用 LLM
+        raw_output = call_llm(prompt)
+        # 5. 解析 JSON
+        raw_data = parse_llm_json (raw_output)
+    
+        inner_dict = raw_data.get ("properties", raw_data)
+        if inner_dict is not None:
+            for id in inner_dict["evidence_ids"]:
+                num = extract_number(id)
+                if num is None:
+                    continue
+                idx = num - 1
+                print(idx)
+                fr.trace_status = "FOUND"
+                fr.source_page = evidence[fname][idx]["page"]
+                fr.source_text = evidence[fname][idx]["text"]
+            setattr(contract,fname,fr)
+
+import re
+
+def extract_number(raw_id: str):
+    # 正则提取字符串里面所有数字，拿到末尾序号
+    nums = re.findall(r"\d+", raw_id)
+    if nums:
+        return int(nums[-1])
+    return None
+
+
+def build_evidence_prompt(
+    field: str,
+    value: str,
+    matches: list[dict],
+) -> str:
+    
+    sections=['----------------------------',f'{field}']
+    for i, item in enumerate(matches, start=1):
+        block = f"ID: '{i}' | 页码: {item.get('page')}\n{item['text']}"
+        sections.append(block)
+    excerpts = "\n\n".join(sections)
+    
+    print(excerpts)
+    return f"""
+你是合同证据核验助手。
+待核验字段: {field}
+已提取的值: {value}
+任务：只从原文片段里，找到**直接支持该字段业务含义**的原文，
+⚠️禁止仅仅因为文本里面出现数字、日期字符串就选中该片段！
+⚠️排除规则：
+- 如果是质保期限、验收时限、工期天数、付款截止时间，**不要选**，这些不是本字段的证据。
+请从以下原文中判断，哪些片段能够直接支持该字段的值，而不只是碰巧出现相同的字符串。
+{excerpts}
+
+【强制要求】
+1. evidence_ids 只能填写【证据列表前面的数字序号】，只能是纯数字字符串！
+2. ❌禁止填写文档id、pdf名字、文本内容，禁止返回类似 "caigouhetong.pdf_55" 的内容
+✅正确示例：["1","2"]
+❌错误示例：["ID: caigouhetong.pdf_55"]
+
+只返回JSON：
+例如：
+{{
+  "supported": true,
+  "evidence_ids": ["2"]
+}}
+如果没有足够证据，请返回 supported=false, evidence_ids=[]。
+只能引用提供的序号，不得编造。
+
+"""

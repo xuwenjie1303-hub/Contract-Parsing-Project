@@ -5,15 +5,6 @@ proj_root = Path(__file__).parent.parent.absolute()
 sys.path.insert(0, str(proj_root))
 import logging
 import streamlit as st
-from app.parsers.pdf_parsers import extract_text_from_pdf 
-from app.services.llm_service import call_llm
-from app.model.contract import ContractLLMOutput,Contract
-from app.model.document import product_texts
-from app.model.contract import supply_system,build_contract
-from app.services.normalizer import normalize_amount,normalize_date
-from app.services.validator import check_output
-from app.services.json_parser import parse_llm_json
-from app.services.contract_pipeline import process_contract
 from streamlit_app.single_file_process import single_process
 from streamlit_app.multipied_files import multipied_process
 
@@ -26,7 +17,7 @@ logging.basicConfig(
 
 
 
-st.title("PDF信息提取系统")
+st.title("合同智能信息系统")
 
 # 三个能力卡片
 col1, col2, col3 = st.columns(3)

@@ -36,7 +36,6 @@ def extract_text_from_pdf(pdf_input: str, filename: str|None = None,) -> datacla
                 text=page_text
             )
         )
-        # print(page_text)
     result = Document(
         filename=filename,
         pages_count=len(doc),
